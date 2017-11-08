@@ -56,6 +56,7 @@
         },
 
         preload: function () {
+            this.load.audio('themesound','audio/theme.wav');
 
             //  We need this because the assets are on github pages
             //  Remove the next 2 lines if running locally
@@ -72,6 +73,8 @@
         },
 
         create: function () {
+            this.theme=this.add.audio('themesound');
+        	this.theme.play();
 
             this.map = this.add.tilemap('map');
             this.map.addTilesetImage('pacman-tiles', 'tiles');
