@@ -11,13 +11,14 @@
          "x":0,
          "y":0
         }],
+ 
+ "nextobjectid":1,
  "orientation":"orthogonal",
- "properties":
-    {
-
-    },
+ "renderorder":"right-down",
+ "tiledversion":"1.0.3",
  "tileheight":16,
  "tilesets":[
+         
         {
          "firstgid":1,
          "image":"..\/pacman-tiles.png",
