@@ -33,8 +33,8 @@
         this.pacman = null;
         this.safetile = 14;
         this.gridsize = 16;
-        this.speed = 150;
-        this.threshold = 3;
+        this.speed = 140;
+        this.threshold = 10;
         this.marker = new Phaser.Point();
         this.turnPoint = new Phaser.Point();
         this.directions = [ null, null, null, null, null ];
@@ -79,7 +79,7 @@
         
         create: function () {
             this.theme=this.add.audio('themesound');
-        	this.theme.play();
+            this.theme.play();
             
             this.map = this.add.tilemap('map');
             this.map.addTilesetImage('pacman-tiles', 'tiles');
@@ -216,12 +216,14 @@
             this.move(this.turning);
             this.turning = Phaser.NONE;
             return true;
+
+           
         },
         
         
         
         move: function (direction) {
-            var speed = this.speed;
+             var speed = this.speed;
             if (direction === Phaser.LEFT || direction === Phaser.UP)
             {
                 speed = -speed;
@@ -250,6 +252,8 @@
                 this.pacman.angle = 90;
             }
             this.current = direction;
+
+           
         },
         
         
@@ -270,7 +274,7 @@
                 text3.setText("Lives: " + lives);
             }
             else {
-                
+                // display loss message and nullify text3
                 text3.setText("");
             }
             
@@ -304,8 +308,25 @@
                
         },
         
-        
-        
+        eatStrawberry: function (pacman, strawberry) {
+            score = score + 3;
+            text.setText("Score: " + score);
+            strawberry.kill();
+            if (this.switch.isPlaying != true && this.switch2.isPlaying != true) {
+                this.switch.play();
+                this.counter = 1;
+            }
+            else {
+                if (this.counter % 6 == 0) {
+                    this.switch.play();
+                }
+                if (this.counter % 6 == 3) {
+                    this.switch2.play();
+                }
+                this.counter++;
+            }
+        },
+
         
          eatBanana: function (pacman, banana) {
             score = score + 5;
@@ -325,8 +346,7 @@
                 this.counter++;
             }
         },
-        
-        
+
         
         
         
@@ -336,7 +356,7 @@
             
           this.physics.arcade.collide(this.pacman, this.layer);
             this.physics.arcade.overlap(this.pacman, this.dots, this.eatDot, null, this);
-            
+            // bonus
             if (total > 10) {
                 this.physics.arcade.overlap(this.pacman, this.bonuses, this.eatBonus, null, this);
             }
@@ -344,7 +364,7 @@
             this.physics.arcade.overlap(this.pacman, this.bananas, this.eatBanana, null, this);
             this.marker.x = this.math.snapToFloor(Math.floor(this.pacman.x), this.gridsize) / this.gridsize;
             this.marker.y = this.math.snapToFloor(Math.floor(this.pacman.y), this.gridsize) / this.gridsize;
-            
+            //  Update our grid sensors
             this.directions[1] = this.map.getTileLeft(this.layer.index, this.marker.x, this.marker.y);
             this.directions[2] = this.map.getTileRight(this.layer.index, this.marker.x, this.marker.y);
             this.directions[3] = this.map.getTileAbove(this.layer.index, this.marker.x, this.marker.y);
