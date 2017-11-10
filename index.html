@@ -92,6 +92,7 @@
             this.bananas = this.add.physicsGroup();
             
             this.bonuses = this.add.physicsGroup();
+            this.map.createFromTiles(37, this.safetile, 'bonus', this.layer, this.bonuses);
             this.map.createFromTiles(7, this.safetile, 'dot', this.layer, this.dots);
             this.bonuses.visible = false;
             
