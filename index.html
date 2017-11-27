@@ -15,6 +15,22 @@
 <body>
 
     <script type="text/javascript">
+  // Constants
+    const version = '0.8.2 alpha';
+    const maxTime = 255;
+    const begin_time_init = 3;
+    const pacman_init_x = 152;
+    const pacman_init_y = 264;
+    const world_width = 1024;
+    const world_height = 512;
+    const bonusScore = 100;
+    const init_lifes = 3;
+    const totalEnemies = 4;
+    const gui_lifes_x = world_width-32*3 - 3*5; // 32x3: 3 Hearts x 32 Pixels, 3x5: 3 x 5 Offset X
+    const gui_lifes_y = 50;
+
+
+
     var game = new Phaser.Game(448, 496, Phaser.AUTO);
         
     var text;
@@ -28,6 +44,7 @@
     var disable = 0;
         
     var Pacman = function (game) {
+        this.counter=0;
         this.map = null;
         this.layer = null;
         this.pacman = null;
@@ -61,9 +78,9 @@
             this.load.crossOrigin = 'anonymous';
             
             this.load.image('dot', 'assets/dot.png');
+            this.load.image('bonus', 'assets/bonus.png');
             
-            
-            
+            this.load.image('strawberry', 'assets/strawberry.png');
             this.load.image('banana', 'assets/banana.png');
             
             this.load.audio('win', 'assets/audio/switch.mp3');
@@ -71,6 +88,7 @@
              this.load.audio('switch', 'assets/audio/switch.mp3');
             
             this.load.image('tiles', 'assets/pacman-tiles.png');
+            this.load.spritesheet('enemies', 'assets/ghosts-enemies.png', 32, 35);
             
             this.load.spritesheet('pacman', 'assets/pacman.png', 32, 32);
             this.load.tilemap('map', 'assets/pacman-map.json', null, Phaser.Tilemap.TILED_JSON);
@@ -88,16 +106,15 @@
             
             this.dots = this.add.physicsGroup();
             
-            
+            this.strawberries = this.add.physicsGroup();
             this.bananas = this.add.physicsGroup();
             
-            
+            this.bonuses = this.add.physicsGroup();
+            this.map.createFromTiles(7, this.safetile, 'dot', this.layer, this.dots);
+            this.bonuses.visible = false;
             
             this.map.createFromTiles(7, this.safetile, 'dot', this.layer, this.dots);
-            
-            
-            this.map.createFromTiles(7, this.safetile, 'dot', this.layer, this.dots);
-            
+            this.map.createFromTiles(35, this.safetile, 'strawberry', this.layer, this.strawberries);
             this.map.createFromTiles(36, this.safetile, 'banana', this.layer, this.bananas);
             
             this.switch = game.add.audio('switch');
@@ -107,7 +124,8 @@
             //  The dots will need to be offset by 6px to put them back in the middle of the grid
             this.dots.setAll('x', 6, false, false, 1);
             this.dots.setAll('y', 6, false, false, 1);
-            
+            this.strawberries.setAll('x', 0, false, false, 1);
+            this.strawberries.setAll('y', 0, false, false, 1);
             this.bananas.setAll('x', 0, false, false, 1);
             this.bananas.setAll('y', 0, false, false, 1);
             //  Pacman should collide with everything except the safe tile
@@ -126,17 +144,17 @@
             this.move(Phaser.LEFT);
             text = game.add.text(game.world.x, game.world.y, "Score: " + score, {
                 font: "15px Arial",
-                fill: "#oooooo"
+                fill: "#ffffff"
             });
             text.anchor.set(0, -20.4);
             text2 = game.add.text(game.world.x, game.world.y, "Timer: " + timer + " seconds", {
                 font: "15px Arial",
-                fill: "#oooooo",
+                fill: "#ffffff",
             });
             text2.anchor.set(-1, -20.4);
             text3 = game.add.text(game.world.x, game.world.y, "Lives: " + lives, {
                 font: "15px Arial",
-                fill: "#oooooo",
+                fill: "#ffffff",
             });
             text3.anchor.set(-6, -20.4);
             
@@ -145,10 +163,22 @@
             timer.loop(1000, updateCounter, this);
             
             timer.start();
-        
+
+         // Placing Enemies
+            this.enemies = this.add.group();
+            this.enemies.enableBody = true;
+            // this.enemies.physicsBodyType = this.physics.ARCADE;
+            for (var i = 0; i < totalEnemies; i++) {
+                const x = this.rnd.integerInRange(64, 944);
+                const y = 112;
+                const snappedPoint = this.snapPointToMap(x, y);
+                var enemy = this.enemies.create(snappedPoint.worldX, snappedPoint.worldY, 'enemies', i);
+                enemy.anchor.set(0.5);
+                enemy.body.setSize(16, 16);
+            }
             
             
-            
+            this.generateBonus();
             
         },
         checkKeys: function () {
@@ -255,6 +285,7 @@
 
            
         },
+
         
         
         eatBonus: function (pacman, bonus) {
@@ -263,6 +294,10 @@
             text.setText("Score: " + score);
         },
         
+         snapPointToMap: function(x, y) {
+            return this.map.getTileWorldXY(x, y, 16, 16);;
+        },
+
         
         eatDot: function (pacman, dot) {
             
@@ -307,11 +342,34 @@
         
                
         },
+          generateBonus: function() {
+            let totalDots = this.dots.children.length;
+            bonusIndex = Math.floor(Math.random() * totalDots);
+            this.dots.children[bonusIndex].revive();
+            this.dots.children[bonusIndex].loadTexture('bonus');
+        },
         
-        
+        eatStrawberry: function (pacman, strawberry) {
+            score = score + 3;
+            text.setText("Score: " + score);
+            strawberry.kill();
+            if (this.switch.isPlaying != true && this.switch2.isPlaying != true) {
+                this.switch.play();
+                this.counter = 1;
+            }
+            else {
+                if (this.counter % 6 == 0) {
+                    this.switch.play();
+                }
+                if (this.counter % 6 == 3) {
+                    this.switch2.play();
+                }
+                this.counter++;
+            }
+        },
 
         
-         eatBanana: function (pacman, banana) {
+         eatbanana: function (pacman, banana) {
             score = score + 5;
             text.setText("Score: " + score);
             banana.kill();
@@ -330,6 +388,67 @@
             }
         },
 
+
+         enemyLayerColission: function(enemy, layer) {
+            this.move(enemy, this.randomDirection(), false);
+        },
+        randomDirection: function() {
+            var directionInt = this.rnd.integerInRange(0, 3);
+            switch(directionInt) {
+                case 0: 
+                    return Phaser.LEFT;
+                case 1:
+                    return Phaser.RIGHT;
+                case 2: 
+                    return Phaser.UP;
+                case 3: 
+                    return Phaser.DOWN;
+            }
+        },
+        
+        resetGame: function() {
+            console.debug('Game Reset!');
+            timeCount = maxTime;
+            begin_time = begin_time_init;
+            scoreCount = 0;
+            lifes = init_lifes;
+            this.dots.callAll('revive');
+            this.pacman.x = pacman_init_x;
+            this.pacman.y = pacman_init_y;
+            // Placing Enemies
+            for (var i = 0; i < totalEnemies; i++) {
+                const tile = this.snapPointToMap(this.rnd.integerInRange(64, 944), 112);
+                this.enemies.children[i].x = tile.worldX;
+                this.enemies.children[i].y = tile.worldY;
+            }
+            // Life GUI
+            this.lifes.removeChildren();
+            for (var i = 0; i < lifes; i++) {
+                var life = this.lifes.create(gui_lifes_x + 32*i, gui_lifes_y, 'life');
+            }
+            intro.play();
+        },
+        lifeLost: function() {
+            console.debug('Life Lost! Total Lifes:', lifes);
+            begin_time = begin_time_init;
+            lifes--;
+            this.dots.callAll('revive');
+            this.pacman.x = pacman_init_x;
+            this.pacman.y = pacman_init_y;
+            // Placing Enemies
+            for (var i = 0; i < totalEnemies; i++) {
+                const tile = this.snapPointToMap(this.rnd.integerInRange(64, 944), 112);
+                this.enemies.children[i].x = tile.worldX;
+                this.enemies.children[i].y = tile.worldY;
+            }
+            // Life GUI
+            this.lifes.removeChildren();
+            for (var i = 0; i < lifes; i++) {
+                var life = this.lifes.create(gui_lifes_x + 32*i, gui_lifes_y, 'life');
+            }
+            intro.play();
+        },
+
         
         
         
@@ -344,7 +463,7 @@
                 this.physics.arcade.overlap(this.pacman, this.bonuses, this.eatBonus, null, this);
             }
             this.physics.arcade.overlap(this.pacman, this.strawberries, this.eatStrawberry, null, this);
-            this.physics.arcade.overlap(this.pacman, this.bananas, this.eatBanana, null, this);
+            this.physics.arcade.overlap(this.pacman, this.bananas, this.eatbanana, null, this);
             this.marker.x = this.math.snapToFloor(Math.floor(this.pacman.x), this.gridsize) / this.gridsize;
             this.marker.y = this.math.snapToFloor(Math.floor(this.pacman.y), this.gridsize) / this.gridsize;
             //  Update our grid sensors
