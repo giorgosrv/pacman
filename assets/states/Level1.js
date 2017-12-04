@@ -111,7 +111,6 @@ Pacman.prototype = {
 
         end_text.visible = false;
         finish_text.visible = false;
-        this.game.paused = true;
     },
 
     checkKeys: function () {
