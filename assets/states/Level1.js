@@ -111,7 +111,7 @@ Pacman.prototype = {
 
         end_text.visible = false;
         finish_text.visible = false;
-        this.game.pause();
+        this.game.paused = true;
     },
 
     checkKeys: function () {
@@ -367,7 +367,7 @@ Pacman.prototype = {
     },
 
     manageTime: function () {
-        //this.game.time.resume();
+        //this.game.paused = false;
         time = this.game.time.totalElapsedSeconds()|0;
         time_text.text = 'Time: ' + time + ' seconds';
     },
