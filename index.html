@@ -15,6 +15,13 @@
 <body>
 
     <script type="text/javascript">
+        var game = new Phaser.Game(290, 240, Phaser.CANVAS, '', {								//added a few comments with context on changes.
+			preload : preload,
+			create : create,
+			update : update,
+			render : render
+		}, false, false);
+
   // Constants
     const version = '0.8.2 alpha';
     const maxTime = 255;
