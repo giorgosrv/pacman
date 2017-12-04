@@ -1,4 +1,3 @@
-//var game = new Phaser.Game(448, 496, Phaser.AUTO);
 var music;
 var time;
 var time_text;
@@ -112,6 +111,7 @@ Pacman.prototype = {
 
         end_text.visible = false;
         finish_text.visible = false;
+        this.game.time.pause();
     },
 
     checkKeys: function () {
@@ -367,6 +367,7 @@ Pacman.prototype = {
     },
 
     manageTime: function () {
+        //this.game.time.resume();
         time = this.game.time.totalElapsedSeconds()|0;
         time_text.text = 'Time: ' + time + ' seconds';
     },
