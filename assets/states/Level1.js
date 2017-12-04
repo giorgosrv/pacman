@@ -1,4 +1,5 @@
 var music;
+var time;
 var time_text;
 var atm_time;
 var after_8_time;
@@ -366,7 +367,8 @@ Pacman.prototype = {
     },
 
     manageTime: function () {
-        time_text.text = 'Time: ' + (this.game.time.totalElapsedSeconds()|0) + ' seconds';
+        time = this.game.time.totalElapsedSeconds()|0;
+        time_text.text = 'Time: ' + time + ' seconds';
     },
 
     nextLevel: function () {
