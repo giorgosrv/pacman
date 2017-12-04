@@ -35,7 +35,6 @@ Preload.prototype = {
 	},
 
 	create: function(){
-        console.log('%cPreload -> create intitialized', 'color:white; background:red');
 		this.game.state.start('MainMenu');
 	}
 }

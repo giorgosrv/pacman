@@ -50,7 +50,6 @@ Pacman.prototype = {
     preload: function () {},
 
     create: function () {
-        console.log('%cLevel1 -> create intitialized', 'color:white; background:red');
         this.map = this.add.tilemap('map');
         this.map.addTilesetImage('pacman-tiles', 'tiles');
         this.map.addTilesetImage('blackberry', 'blackberry-tiles');
