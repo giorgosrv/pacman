@@ -129,6 +129,9 @@ Pacman_level2.prototype = {
         finish_text.visible = false;
         score_text.text = 'Score: ' + score + ' points';
         lives_text.text = 'Lives: ' + lives;
+        if (next_level != true) {
+            this.game.time.reset();
+        }
     },
 
     checkKeys: function () {

@@ -1,5 +1,4 @@
 var music;
-var timer;
 var time_text;
 var atm_time;
 var after_8_time;
@@ -51,6 +50,7 @@ Pacman.prototype = {
     preload: function () {},
 
     create: function () {
+        console.log('%cLevel1 -> create intitialized', 'color:white; background:red');
         this.map = this.add.tilemap('map');
         this.map.addTilesetImage('pacman-tiles', 'tiles');
         this.map.addTilesetImage('blackberry', 'blackberry-tiles');
@@ -111,6 +111,7 @@ Pacman.prototype = {
 
         end_text.visible = false;
         finish_text.visible = false;
+        this.game.time.reset();
     },
 
     checkKeys: function () {
@@ -366,10 +367,13 @@ Pacman.prototype = {
     },
 
     manageTime: function () {
-        timer = this.game.time.create(false);
-        timer.start();
-        //time = this.game.time.totalElapsedSeconds()|0;
-        time_text.text = 'Time: ' + timer + ' seconds';
+        time_text.text = 'Time: ' + (this.game.time.totalElapsedSeconds()|0) + ' seconds';
+    },
+
+    nextLevel: function () {
+        if (next_level == true) {
+            this.state.start('Level2');
+        }
     },
 
     update: function () {
@@ -401,12 +405,6 @@ Pacman.prototype = {
         this.eatBonus();
         this.manageTime();
         this.enemySoldier();
-        nextLevel(this.game);
+        this.nextLevel();
     }
 };
-
-var nextLevel = function (game) {
-    if (next_level == true) {
-        game.state.start('Level2');
-    }
-}
