@@ -23,7 +23,7 @@ var MENU = {
 		
 
 		var btn1 = game.add.button(490 , 320, "lvl1", function(){
-			game.state.start('S1');
+			game.state.start('pacman-map');
 		});
 		btn1.anchor.set(0.5, 0.5);
 
