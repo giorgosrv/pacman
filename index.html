@@ -50,6 +50,8 @@
     var timer;
     var total = 0;
     var disable = 0;
+	    game.state.add('MENU', MENU);
+		game.state.start('MENU');
         
     var Pacman = function (game) {
         this.counter=0;
