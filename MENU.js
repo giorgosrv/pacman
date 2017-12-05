@@ -5,7 +5,7 @@ var MENU = {
 		game.load.image('lvl1', 'assets/Level1.png');
 		
 
-		game.load.audio('menus', 'audio/menu.wav');
+		
 
 	},
 	
