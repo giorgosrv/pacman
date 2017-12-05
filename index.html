@@ -9,9 +9,9 @@
             padding: 0;
             background-color: #000;
         }
-    /*     h1 {color: white;}
+         h1 {color: white;}
         h2 {color: white;}
-        h3 {color: white;}*/
+        h3 {color: white;}
     </style>
     <script src="//cdn.jsdelivr.net/phaser/2.2.2/phaser.min.js"></script>
 </head>
@@ -44,6 +44,8 @@
     var totalDirection = 0;
     var randomVar = 0;
     var themesound;
+        game.state.add('menu', menu);
+		game.state.start('menu');
 
 
     var Pacman = function (game) {
