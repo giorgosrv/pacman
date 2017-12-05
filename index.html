@@ -10,14 +10,13 @@
             background-color: #000;
         }
     </style>
-	<script src="MENU.js"></script>
-	<script src="pacman-map.js"></script>
+	
     <script src="//cdn.jsdelivr.net/phaser/2.2.2/phaser.min.js"></script>
 </head>
 <body>
 
     <script type="text/javascript">
-	    var game = new Phaser.Game(1030, 480, Phaser.CANVAS, '', this, false, false);
+	   
        /* var game = new Phaser.Game(290, 240, Phaser.CANVAS, '', {								//added a few comments with context on changes.
 			preload : preload,
 			create : create,
@@ -52,9 +51,7 @@
     var timer;
     var total = 0;
     var disable = 0;
-	    game.state.add('pacman-map', pacman-map);
-	    game.state.add('MENU', MENU);
-		game.state.start('MENU');
+	   
         
     var Pacman = function (game) {
         this.counter=0;
