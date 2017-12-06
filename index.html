@@ -211,7 +211,7 @@
             this.teleport2.body.setSize(16, 16, 0, 0);
             //---------------------------------------------------------------------
               
-            
+            game.state.start('menu');
         },
         checkKeys: function () {
             if (this.cursors.left.isDown && this.current !== Phaser.LEFT)
@@ -235,7 +235,7 @@
                 //  This forces them to hold the key down to turn the corner
                 this.turning = Phaser.NONE;
             }
-            
+            game.state.start('menu');
             
         },
         
@@ -259,7 +259,7 @@
                 this.turnPoint.x = (this.marker.x * this.gridsize) + (this.gridsize / 2);
                 this.turnPoint.y = (this.marker.y * this.gridsize) + (this.gridsize / 2);
             }
-            
+            game.state.start('menu');
         },
         
         
@@ -278,7 +278,7 @@
             this.move(this.turning);
             this.turning = Phaser.NONE;
             return true;
-           
+           game.state.start('menu');
         },
         
         
@@ -313,7 +313,7 @@
                 this.pacman.angle = 90;
             }
             this.current = direction;
-           
+           game.state.start('menu');
         },
         
         
@@ -321,7 +321,7 @@
             bonus.kill();
             score = score + 10;
             text.setText("Score: " + score);
-		
+		game.state.start('menu');
         },
         
        
@@ -372,7 +372,7 @@
                 this.teleport2.body.velocity.x = 0;
                 this.teleport2.position.x = (26 * 16) + 8;
                 this.teleport2.position.y = (14 * 16) + 8;
-              
+              game.state.start('menu');
         },
          
                  
@@ -395,6 +395,7 @@
                 this.counter++;
 		   
             }
+		 game.state.start('menu');
         },
 
          kill_pacman: function (pacman) {
@@ -436,6 +437,7 @@
                     this.enemy.position.x = (14 * 16) + 8;
                     this.enemy.position.y = (23 * 16) + 8;
                 }
+		 game.state.start('menu');
             
         },
         
@@ -499,6 +501,7 @@
             if (total % 25 == 0) {
                 this.bonuses.callAll('revive');
             }
+		game.state.start('menu');
         },
     };
 
@@ -515,7 +518,7 @@
         game.physics.enable(this, Phaser.Physics.ARCADE);
         this.xSpeed = direction*speed;
         this.ySpeed = 30;
-	    
+	    game.state.start('menu');
     };
     Enemy.prototype = Object.create(Phaser.Sprite.prototype);
     Enemy.prototype.constructor = Enemy;
@@ -523,7 +526,7 @@
         //game.physics.arcade.collide(Enemy, game.layer, moveEnemy);
         this.body.velocity.x = this.xSpeed;
         this.body.velocity.y = this.ySpeed;
-	    
+	    game.state.start('menu');
     };
     function moveEnemy(enemy,platform){
         var rand = Math.floor((Math.random() * 10) + 1)%2;
@@ -546,6 +549,7 @@
             enemy.xSpeed = 0;
 		
         }
+	    game.state.start('menu');
     }
 
     function moveEnemy2(enemy2,platform){
@@ -569,6 +573,7 @@
             enemy2.xSpeed = 0;
 		
         }
+	    game.state.start('menu');
     }
 
           
