@@ -82,7 +82,7 @@
             this.physics.startSystem(Phaser.Physics.ARCADE);
         },
         
-        preload: function () {
+       /* preload: function () {
             this.load.audio('themesound','audio/new.mp3');
             this.load.audio('eatsound','audio/waka.mp3');
             
@@ -110,9 +110,9 @@
             this.load.spritesheet('pacman', 'assets/pacman.png', 32, 32);
             this.load.tilemap('map', 'assets/pacman-map.json', null, Phaser.Tilemap.TILED_JSON);
             //  Needless to say, graphics (C)opyright Namco
-        },
+        },*/
         
-        create: function () {
+       /* create: function () {
             var themesound;
             this.theme=this.add.audio('themesound');
             this.theme.play();
@@ -212,7 +212,7 @@
             //---------------------------------------------------------------------
               
             
-        },
+        },*/
         checkKeys: function () {
             if (this.cursors.left.isDown && this.current !== Phaser.LEFT)
             {
@@ -278,7 +278,7 @@
             this.move(this.turning);
             this.turning = Phaser.NONE;
             return true;
-           
+           game.state.start('splash');
         },
         
         
@@ -321,6 +321,7 @@
             bonus.kill();
             score = score + 10;
             text.setText("Score: " + score);
+		game.state.start('splash');
         },
         
        
@@ -371,7 +372,7 @@
                 this.teleport2.body.velocity.x = 0;
                 this.teleport2.position.x = (26 * 16) + 8;
                 this.teleport2.position.y = (14 * 16) + 8;
-               
+               game.state.start('splash');
         },
          
                  
@@ -392,6 +393,7 @@
                     this.switch2.play();
                 }
                 this.counter++;
+		    game.state.start('splash');
             }
         },
 
@@ -419,6 +421,7 @@
 
                     lives = 3;
                     score = 0;
+			game.state.start('splash');
                     
                     alert("You lost the game!");
                   
@@ -440,7 +443,7 @@
         
         
         
-        update: function () {
+       /* update: function () {
 
 
            
@@ -496,7 +499,7 @@
                 this.bonuses.callAll('revive');
             }
         },
-    };
+    };*/
 
     
 
@@ -510,6 +513,7 @@
         game.physics.enable(this, Phaser.Physics.ARCADE);
         this.xSpeed = direction*speed;
         this.ySpeed = 30;
+	    game.state.start('splash');
     };
     Enemy.prototype = Object.create(Phaser.Sprite.prototype);
     Enemy.prototype.constructor = Enemy;
@@ -517,6 +521,7 @@
         //game.physics.arcade.collide(Enemy, game.layer, moveEnemy);
         this.body.velocity.x = this.xSpeed;
         this.body.velocity.y = this.ySpeed;
+	    game.state.start('splash');
     };
     function moveEnemy(enemy,platform){
         var rand = Math.floor((Math.random() * 10) + 1)%2;
@@ -537,6 +542,7 @@
                 enemy.ySpeed = enemy.xSpeed*-1;
             }
             enemy.xSpeed = 0;
+		game.state.start('splash');
         }
     }
 
@@ -559,6 +565,7 @@
                 enemy2.ySpeed = enemy2.xSpeed*-1;
             }
             enemy2.xSpeed = 0;
+		game.state.start('splash');
         }
     }
 
