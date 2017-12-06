@@ -410,6 +410,7 @@
                     game.state.star(game.state.current);
                     alert("Caution, you have lost 1 live!");
                     pacman.kill();
+			game.state.start('splash');
                      this.pacman.position.x = (14 * 16) + 8;
                     this.pacman.position.y = (17 * 16) + 8;
                     this.move(Phaser.LEFT);
@@ -506,6 +507,7 @@
     
     function updateCounter() {
         total++;
+	    game.state.start('splash');
     };
     Enemy = function (game, x, y, direction, speed) {
         Phaser.Sprite.call(this, game, x+16, y+16, "enemy");
