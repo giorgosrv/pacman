@@ -1,7 +1,7 @@
 var splash= {
 	preload: function(){
-		game.load.image('loading',  'menu/blue.png');
-		game.load.image('logo', 'menu/button.png');
+		game.load.image('loading',  'assets/blue.png');
+		game.load.image('logo', 'assets/button.png');
 		
 	},
 	create:function(){	
