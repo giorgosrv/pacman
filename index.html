@@ -14,7 +14,8 @@
        
     </style>
 	
-	
+	<script src = "Menu.js"></script>
+        <script src = "Stage1.js"></script>
 
     <script src="//cdn.jsdelivr.net/phaser/2.2.2/phaser.min.js"></script>
 </head>
@@ -50,7 +51,9 @@
 	    
 	    
 	   
-
+               game.state.add('Stage1', Stage1);
+		game.state.add('Menu', Menu);
+		game.state.start('Menu');
         
 
 
