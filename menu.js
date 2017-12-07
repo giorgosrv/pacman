@@ -2,7 +2,7 @@ var Menu = {
 	preload: function() {
 
 		game.load.image('menu', 'assets/blue.png');
-		game.load.image('button','assets/button.png')'
+		game.load.image('button','assets/button.png');
 		//game.load.audio('tm', 'audio/bgm.mp3');
 		},
 		
