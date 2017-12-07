@@ -180,3 +180,8 @@ preload: function () {
 		
         },
     };
+ 
+    function updateCounter() {
+        total++;
+	   
+    };
