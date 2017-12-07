@@ -14,7 +14,7 @@ var MainMenu = {
 			currentMap = parseInt(localStorage.getItem("currentLevel"));
 
 			map = game.add.tilemap('map');
-			game.state.start('GamePlay');
+			game.state.start('index');
 		});
 		buttonLVL1.anchor.set(0.5, 0.5);
 
