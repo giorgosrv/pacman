@@ -1,12 +1,12 @@
-var Menu={
+var Stage1={
 preload: function () {
             this.load.audio('themesound','audio/new.mp3');
             this.load.audio('eatsound','audio/waka.mp3');
             
             //  We need this because the assets are on github pages
             //  Remove the next 2 lines if running locally
-           // this.load.baseURL = ' https://giorgosrv.github.io/pacman/';
-           // this.load.crossOrigin = 'anonymous';
+            this.load.baseURL = ' https://giorgosrv.github.io/pacman/';
+            this.load.crossOrigin = 'anonymous';
             
             this.load.image('dot', 'assets/dot.png');
             //this.load.image('12', 'assets/kk.png');
