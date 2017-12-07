@@ -21,12 +21,17 @@
     <script src="//cdn.jsdelivr.net/phaser/2.2.2/phaser.min.js"></script>
 </head>
 <body>
-     
+      <audio autoplay loop id="myaudio">
+	<source src="assets/Dragon Ball 8-bit Theme Song.mp3" type="audio/mp3">
+    </audio>
+    
      
 
     
 
     <script type="text/javascript">
+	     var audio = document.getElementById("myaudio");
+    audio.volume = 0.2;
  
     var game = new Phaser.Game(448, 496, Phaser.AUTO);
 	    
