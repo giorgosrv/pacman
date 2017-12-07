@@ -15,8 +15,7 @@
         h2 {color: white;}
         h3 {color: white;}*/
     </style>
-	<script src = "Menu.js"></script>
-        <script src = "Stage1.js"></script>
+	
 	
 
     <script src="//cdn.jsdelivr.net/phaser/2.2.2/phaser.min.js"></script>
@@ -33,10 +32,7 @@
     <script type="text/javascript">
  
     var game = new Phaser.Game(448, 496, Phaser.AUTO);
-	     function preload(){
-		this.load.baseURL = ' https://giorgosrv.github.io/pacman/';
-		this.load.crossOrigin = 'anonymous';
-		}	
+	    
         
     var text;
     var text2;
@@ -81,9 +77,7 @@
          
     };
 	    
-	    game.state.add('Stage1', Stage1);
-		game.state.add('Menu', Menu);
-		game.state.start('Menu');
+	  
     Pacman.prototype = {
         init: function () {
             this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
