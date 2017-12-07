@@ -13,7 +13,7 @@ var MainMenu = {
 			localStorage.setItem("currentLevel", 1);
 			currentMap = parseInt(localStorage.getItem("currentLevel"));
 
-			map = game.add.tilemap('level1');
+			map = game.add.tilemap('map');
 			game.state.start('GamePlay');
 		});
 		buttonLVL1.anchor.set(0.5, 0.5);
