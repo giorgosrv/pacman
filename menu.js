@@ -1,4 +1,4 @@
-var Menu = {
+var menu = {
 	preload: function() {
 
 		game.load.image('menu', 'assets/blue.png');
@@ -16,7 +16,7 @@ var Menu = {
 			game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 			game.physics.startSystem(Phaser.Physics.ARCADE);
 			
-			var menuPic = game.add.sprite(8, 8, 'Menu');
+			var menuPic = game.add.sprite(8, 8, 'menu');
 
 			var StageText = game.add.text(38, 150, 'Stage1', {fontSize: '12px', fill: '#000'});
 			var click1 = game.add.button(60, 197, 'Stage1', function() {
