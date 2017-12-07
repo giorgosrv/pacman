@@ -33,6 +33,10 @@
     <script type="text/javascript">
  
     var game = new Phaser.Game(448, 496, Phaser.AUTO);
+	     function preload(){
+		this.load.baseURL = ' https://giorgosrv.github.io/pacman/';
+		this.load.crossOrigin = 'anonymous';
+		}	
         
     var text;
     var text2;
@@ -76,6 +80,10 @@
         this.enemy = null;
          
     };
+	    
+	    game.state.add('Stage1', Stage1);
+		game.state.add('Menu', Menu);
+		game.state.start('Menu');
     Pacman.prototype = {
         init: function () {
             this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
