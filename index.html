@@ -110,6 +110,11 @@
             this.load.spritesheet('pacman', 'assets/pacman.png', 32, 32);
             this.load.tilemap('map', 'assets/pacman-map.json', null, Phaser.Tilemap.TILED_JSON);
             //  Needless to say, graphics (C)opyright Namco
+		
+		//Main menu images
+		this.load.image('Title', 'assets/blue.png');
+		this.load.image('lvl1', 'assets/button.png');
+		
         },
         
         create: function () {
