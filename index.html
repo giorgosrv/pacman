@@ -14,8 +14,7 @@
        
     </style>
 	
-	<script src = "menu.js"></script>
-        <script src = "Stage1.js"></script>
+	
 
     <script src="//cdn.jsdelivr.net/phaser/2.2.2/phaser.min.js"></script>
 </head>
@@ -51,9 +50,7 @@
 	    
 	    
 	   
-               game.state.add('Stage1', Stage1);
-		game.state.add('Menu', Menu);
-		game.state.start('Menu');
+              
         
 
 
@@ -86,7 +83,7 @@
             this.physics.startSystem(Phaser.Physics.ARCADE);
         },
         
-      /*  preload: function () {
+        preload: function () {
             this.load.audio('themesound','audio/new.mp3');
             this.load.audio('eatsound','audio/waka.mp3');
             
@@ -219,7 +216,7 @@
             //---------------------------------------------------------------------
               
            
-        },*/
+        },
         checkKeys: function () {
             if (this.cursors.left.isDown && this.current !== Phaser.LEFT)
             {
@@ -453,7 +450,7 @@
         
         
         
-     /*   update: function () {
+        update: function () {
 
 
            
@@ -518,7 +515,7 @@
     function updateCounter() {
         total++;
 	   
-    };*/
+    };
     Enemy = function (game, x, y, direction, speed) {
         Phaser.Sprite.call(this, game, x+16, y+16, "enemy");
         //this.anchor.setTo(.5);
