@@ -1,3 +1,4 @@
+var Stage1 = {
 preload: function () {
             this.load.audio('themesound','audio/new.mp3');
             this.load.audio('eatsound','audio/waka.mp3');
@@ -185,3 +186,4 @@ preload: function () {
         total++;
 	   
     };
+}
