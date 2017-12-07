@@ -54,6 +54,9 @@
 	    localStorage.setItem("currentLevel", 0);
 		var currentMap = parseInt(localStorage.getItem("currentLevel"));
 	    
+	    game.state.add('MainMenu', MainMenu);
+		game.state.add('GamePlay', index);
+	    
 	   
 
         
