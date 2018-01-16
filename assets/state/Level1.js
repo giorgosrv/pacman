@@ -19,7 +19,16 @@
     var randomVar = 0;
     var themesound;
     var next_level = false;
-	    
+	    var time;
+var time_text;
+var atm_time;
+var after_8_time;
+
+var score = 0;
+var score_text;
+
+var lives = 3;
+var lives_text;
 	    
 	   
               
@@ -89,28 +98,14 @@
             this.cursors = this.input.keyboard.createCursorKeys();
             this.pacman.play('munch');
             this.move(Phaser.LEFT);
-            text = game.add.text(game.world.x, game.world.y, "Score: " + score, {
-                font: "15px Arial",
-                fill: "#ffffff"
-            });
-            text.anchor.set(0, -20.4);
-            text2 = game.add.text(game.world.x, game.world.y, "Timer: " + timer + " seconds", {
-                font: "15px Arial",
-                fill: "#ffffff",
-            });
-            text2.anchor.set(-1, -20.4);
-            text3 = game.add.text(game.world.x, game.world.y, "Lives: " + lives, {
-                font: "15px Arial",
-                fill: "#ffffff",
-            });
-            text3.anchor.set(-6, -20.4);
-            
-            timer = game.time.create(false);
-            
-            timer.loop(1000, updateCounter, this);
-            
-            timer.start();
-        
+            time_text = this.add.text(10, -2, 'Time: 0 seconds', { font: '14px Arial', fill: '#FFFFFF' });
+        score_text = this.add.text(180, -2, 'Score: 0 points', { font: '14px Arial', fill: '#FFFFFF' });
+        lives_text = this.add.text(360, -2, 'Lives: 3', { font: '14px Arial', fill: '#FFFFFF' });
+        end_text = this.add.text(180, 330, 'Game Over!', { font: '14px Arial', fill: '#FFFFFF' });
+        finish_text = this.add.text(185, 210, 'Completed!', { font: '14px Arial', fill: '#FFFFFF' });
+
+        end_text.visible = false;
+        finish_text.visible = false;
             
             
               //--------------TELEPORT1-----------------------------------------------
