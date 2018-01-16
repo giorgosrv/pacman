@@ -1,4 +1,4 @@
-var Boot = function(game) {
+var Boot = function(game) {};
 	
 Boot.prototype = {
 	preload: function() {
