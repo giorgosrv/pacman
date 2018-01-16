@@ -1,5 +1,5 @@
 var Boot = function(game) {
-	console.log('%cPacman ', 'color:white; background:red');
+	console.log('%cPacman-game ', 'color:white; background:red');
 };
 
 Boot.prototype = {
