@@ -313,6 +313,14 @@
                 this.teleport2.position.y = (14 * 16) + 8;
             
         },
+	    
+	     endLevel: function () {
+        if (lives == 0) {
+            this.game.paused = true;
+            end_text.visible = true;
+        }
+    },
+
          
                  
         
