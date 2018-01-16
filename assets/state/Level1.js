@@ -438,7 +438,7 @@ var lives_text;
             }
            this.endLevel();
         
-        this.eatBonus();
+        
         this.manageTime();
         this.enemySoldier();
         nextLevel(this.game);
