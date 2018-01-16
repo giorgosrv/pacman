@@ -54,39 +54,25 @@
         },
         
        preload: function () {},
-        
-        create: function () {
-            var themesound;
-            this.theme=this.add.audio('themesound');
-            this.theme.play();
-            
-            this.map = this.add.tilemap('map');
-            this.map.addTilesetImage('pacman-tiles', 'tiles');
-            
-            this.layer = this.map.createLayer('Pacman');
-            
-            this.dots = this.add.physicsGroup();
-            
-            
-            this.bananas = this.add.physicsGroup();
-            
-            this.bonuses = this.add.physicsGroup();
-            //this.map.createFromTiles(25, this.safetile, 'kk', this.layer, this.kk);
-            this.bonuses.visible = false;
-            
-            this.map.createFromTiles(7, this.safetile, 'dot', this.layer, this.dots);
+	    
+	     create: function () {
+        this.map = this.add.tilemap('map');
+        this.map.addTilesetImage('pacman-tiles', 'tiles');
+        this.map.addTilesetImage('blackberry', 'blackberry-tiles');
+        this.map.addTilesetImage('cherry', 'cherry-tiles');
+        this.map.addTilesetImage('kiwi', 'kiwi-tiles');
+
+        this.layer = this.map.createLayer('Pacman');
+
+        this.dots = this.add.physicsGroup();
+    
+        this.bananas = this.add.physicsGroup();
+
+        this.map.createFromTiles(7, this.safetile, 'dot', this.layer, this.dots);
             
             this.map.createFromTiles(13, this.safetile, 'banana', this.layer, this.bananas);
-            
-         
-             
-          
-            this.switch = game.add.audio('switch');
-            this.switch2 = game.add.audio('switch');
-            this.win = game.add.audio('win');
-            
-            //  The dots will need to be offset by 6px to put them back in the middle of the grid
-            this.dots.setAll('x', 6, false, false, 1);
+		     
+         this.dots.setAll('x', 6, false, false, 1);
             this.dots.setAll('y', 6, false, false, 1);
             
             this.bananas.setAll('x', 15, false, false, 2);
@@ -146,9 +132,9 @@
             this.physics.arcade.enable(this.teleport2);
             this.teleport2.body.setSize(16, 16, 0, 0);
             //---------------------------------------------------------------------
-              
-           
-        },
+    },
+        
+       
         checkKeys: function () {
             if (this.cursors.left.isDown && this.current !== Phaser.LEFT)
             {
@@ -381,7 +367,7 @@
             
         },
 	    
-	       enemySoldierMove: function () {
+	       enemysoldierMove: function () {
         var enemySoldierSpeed = this.speed - 50;
 
         while (direction == previous_direction) {
@@ -418,7 +404,10 @@
         previous_direction = direction;
     },
 
-        
+         manageTime: function () {
+        time = this.game.time.totalElapsedSeconds()|0;
+        time_text.text = 'Time: ' + time + ' seconds';
+    },
         
         
         
@@ -445,10 +434,7 @@
                 this.physics.arcade.overlap(this.pacman, this.bonuses, this.eatBonus, null, this);
             }
             
-              this.physics.arcade.collide(enemy, this.layer, moveEnemy);
-            this.physics.arcade.collide(this.pacman, enemy, this.kill_pacman);
-            this.physics.arcade.collide(enemy2, this.layer, moveEnemy);
-            this.physics.arcade.collide(this.pacman, enemy2, this.kill_pacman);
+               this.physics.arcade.collide(this.soldier, this.layer, this.enemySoldierMove, null, this);
            
             this.physics.arcade.overlap(this.pacman, this.bananas, this.eatbanana, null, this);
             this.marker.x = this.math.snapToFloor(Math.floor(this.pacman.x), this.gridsize) / this.gridsize;
@@ -463,26 +449,16 @@
             {
                 this.turn();
             }
-            text2.setText("Timer: " + total + " seconds");
-            if (total == 10 && disable == 0) {
-                this.bonuses.visible = true;
-                disable = 1;
-            }
-            if (total % 15 == 0) {
-                this.bonuses.callAll('kill');
-            }
-            if (total % 25 == 0) {
-                this.bonuses.callAll('revive');
-            }
-		
-        },
-    };
+           this.endLevel();
+        
+        this.eatBonus();
+        this.manageTime();
+        this.enemySoldier();
+        nextLevel(this.game);
+    }
+};
     
     
-    function updateCounter() {
-        total++;
-	   
-    };
     
           
    var nextLevel = function (game) {
