@@ -73,18 +73,13 @@ Pacman.prototype = {
 
         //  Position Pacman at grid location 13x11 (the +8 accounts for his anchor)
         this.pacman = this.add.sprite((13 * 16) + 8, (11 * 16) + 8, 'pacman', 0);
-        this.teleport_portal_left = this.add.sprite((-1 * 16), (12 * 16), 'teleport_portal_left', 0);
-        this.teleport_portal_right = this.add.sprite((28 * 16), (21 * 16), 'teleport_portal_right', 0);
-        this.knife = this.add.sprite((14 * 16), (29 * 16), 'knife', 0);
-
+     
         this.pacman.anchor.set(0.5);
         this.pacman.animations.add('munch', [0, 1, 2, 1], 15, true);
         this.physics.arcade.enable(this.pacman);
         this.pacman.body.setSize(16, 16, 0, 0);
 
-        this.dynamite = this.add.sprite((11 * 16), (11 * 16), 'dynamite', 0);
-        this.dynamite.visible = false;
-
+      
         this.soldier = this.add.sprite((13 * 16) + 8, (16 * 16) + 8, 'soldier', 0);
         this.soldier.anchor.set(0.5);
         this.physics.arcade.enable(this.soldier);
@@ -317,10 +312,7 @@ Pacman.prototype = {
         this.physics.arcade.collide(this.soldier, this.layer, this.enemySoldierMove, null, this);
         this.physics.arcade.collide(this.pacman, this.knife, this.enemySoldier, null, this);
         this.physics.arcade.overlap(this.pacman, this.dots, this.eatDot, null, this);
-        this.physics.arcade.overlap(this.pacman, this.blackberries, this.eatBlackberry, null, this);
-        this.physics.arcade.overlap(this.pacman, this.cherries, this.eatCherry, null, this);
-        this.physics.arcade.overlap(this.pacman, this.kiwis, this.eatKiwi, null, this);
-
+       
         this.marker.x = this.math.snapToFloor(Math.floor(this.pacman.x), this.gridsize) / this.gridsize;
         this.marker.y = this.math.snapToFloor(Math.floor(this.pacman.y), this.gridsize) / this.gridsize;
 
