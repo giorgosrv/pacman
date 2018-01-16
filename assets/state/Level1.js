@@ -80,7 +80,7 @@
             
           enemy = new Enemy(game, 0, 0, 1, 100);
             game.add.existing(enemy);
-            enemy2 = new Enemy(game, 0, 0, 1, 70);
+            enemy2 = new Enemy2(game, 0, 0, 1, 70);
             game.add.existing(enemy2);
              
           
