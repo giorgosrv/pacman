@@ -2,7 +2,7 @@ var MainMenu = function (game) {}
 
 MainMenu.prototype = {
   	create: function () {
-		console.log('%cMainMenu -> create intitialized', 'color:white; background:red');
+		
 		var Title = this.game.add.sprite(this.world.centerX, this.world.centerY-100, 'title');
 		Title.anchor.setTo(0.5, 0.5);
 
