@@ -231,12 +231,7 @@ var lives_text;
         },
         
         
-        eatBonus: function (pacman, bonus) {
-            bonus.kill();
-            score = score + 10;
-            text.setText("Score: " + score);
-		
-        },
+     
         
        
         
