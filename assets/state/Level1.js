@@ -228,18 +228,7 @@ Pacman.prototype = {
         }
     },
 
-    teleport: function () {
-        //teleport giannaki rambo
-        if (this.pacman.overlap(this.teleport_portal_left)) {
-            this.pacman.reset((26 * 16) + 8, (21 * 16) + 8);
-            this.move(Phaser.LEFT);
-        }
-        else if (this.pacman.overlap(this.teleport_portal_right)) {
-            this.pacman.reset((1 * 16) + 8, (12 * 16) + 8);
-            this.move(Phaser.RIGHT);
-        }
-    },
-
+   
     eatBonus: function () {
         if (counter == 0) {
             if (time >= 10 && time < 16) {
@@ -329,7 +318,7 @@ Pacman.prototype = {
         }
 
         this.endLevel();
-        this.teleport();
+        
         this.eatBonus();
         this.manageTime();
         
