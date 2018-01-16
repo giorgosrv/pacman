@@ -78,10 +78,7 @@
             
             this.map.createFromTiles(13, this.safetile, 'banana', this.layer, this.bananas);
             
-         this.enemy = new Enemy(game, 0, 0, 1, 100);
-            game.add.existing(enemy);
-            this.enemy2 = new Enemy2(game, 0, 0, 1, 70);
-            game.add.existing(enemy2);
+         
              
           
             this.switch = game.add.audio('switch');
@@ -383,6 +380,44 @@
 		
             
         },
+	    
+	       enemySoldierMove: function () {
+        var enemySoldierSpeed = this.speed - 50;
+
+        while (direction == previous_direction) {
+            direction = this.game.rnd.between(0, 3);
+        }
+
+        this.soldier.scale.x = -1;
+        this.soldier.angle = 0;
+
+        if (direction == 0) {//goes right
+            this.soldier.body.velocity.x = enemySoldierSpeed;
+            this.soldier.body.velocity.y = 0;
+        }
+        else if (direction == 1) {//goes left
+            this.soldier.body.velocity.x = -enemySoldierSpeed;
+            this.soldier.body.velocity.y = 0;
+
+            this.soldier.scale.x = 1;
+        }
+        else if (direction == 2) {//goes down
+            this.soldier.body.velocity.x = 0;
+            this.soldier.body.velocity.y = enemySoldierSpeed;
+
+            this.soldier.scale.x = -1;
+            this.soldier.angle = 90;
+        }
+        else {//goes up
+            this.soldier.body.velocity.x = 0;
+            this.soldier.body.velocity.y = -enemySoldierSpeed;
+
+            this.soldier.angle = 270;
+        }
+
+        previous_direction = direction;
+    },
+
         
         
         
@@ -448,68 +483,7 @@
         total++;
 	   
     };
-    Enemy = function (game, x, y, direction, speed) {
-        Phaser.Sprite.call(this, game, x+16, y+16, "enemy");
-        //this.anchor.setTo(.5);
-        game.physics.enable(this, Phaser.Physics.ARCADE);
-        this.xSpeed = direction*speed;
-        this.ySpeed = 30;
-	   
-    };
-    Enemy.prototype = Object.create(Phaser.Sprite.prototype);
-    Enemy.prototype.constructor = Enemy;
-    Enemy.prototype.update = function() {
-        //game.physics.arcade.collide(Enemy, game.layer, moveEnemy);
-        this.body.velocity.x = this.xSpeed;
-        this.body.velocity.y = this.ySpeed;
-	  
-    };
-    function moveEnemy(enemy,platform){
-        var rand = Math.floor((Math.random() * 10) + 1)%2;
-        if (enemy.xSpeed == 0) {
-            if (rand == 0) {
-                enemy.xSpeed = enemy.ySpeed;
-            }
-            else {
-                enemy.xSpeed = enemy.ySpeed*-1;
-            }
-            enemy.ySpeed = 0;
-        }
-        else {
-            if (rand == 0) {
-                enemy.ySpeed = enemy.xSpeed;
-            }
-            else {
-                enemy.ySpeed = enemy.xSpeed*-1;
-            }
-            enemy.xSpeed = 0;
-		
-        }
-	    
-    }
-    function moveEnemy2(enemy2,platform){
-        var rand = Math.floor((Math.random() * 10) + 1)%2;
-        if (enemy.xSpeed == 0) {
-            if (rand == 0) {
-                enemy2.xSpeed = enemy2.ySpeed;
-            }
-            else {
-                enemy2.xSpeed = enemy2.ySpeed*-1;
-            }
-            enemy2.ySpeed = 0;
-        }
-        else {
-            if (rand == 0) {
-                enemy2.ySpeed = enemy2.xSpeed;
-            }
-            else {
-                enemy2.ySpeed = enemy2.xSpeed*-1;
-            }
-            enemy2.xSpeed = 0;
-		
-        }
-	   
-    }
+    
           
    var nextLevel = function (game) {
     if (next_level == true) {
