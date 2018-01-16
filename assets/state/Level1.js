@@ -340,7 +340,7 @@ Pacman.prototype = {
         this.teleport();
         this.eatBonus();
         this.manageTime();
-        this.enemySoldier();
+        
         this.nextLevel();
     }
 };
