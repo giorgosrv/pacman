@@ -49,7 +49,9 @@
             this.physics.startSystem(Phaser.Physics.ARCADE);
         },
         
-        
+        preload: function () {
+    	this.load.tilemap('map', 'assets/pacman-map.json', null, Phaser.Tilemap.TILED_JSON);
+    },
         
         create: function () {
             var themesound;
