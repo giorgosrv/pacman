@@ -57,10 +57,7 @@
 	    
 	     create: function () {
         this.map = this.add.tilemap('map');
-        this.map.addTilesetImage('pacman-tiles', 'tiles');
-        this.map.addTilesetImage('blackberry', 'blackberry-tiles');
-        this.map.addTilesetImage('cherry', 'cherry-tiles');
-        this.map.addTilesetImage('kiwi', 'kiwi-tiles');
+      
 
         this.layer = this.map.createLayer('Pacman');
 
