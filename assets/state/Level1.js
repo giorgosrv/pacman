@@ -18,6 +18,7 @@
     var totalDirection = 0;
     var randomVar = 0;
     var themesound;
+    var next_level = false;
 	    
 	    
 	   
