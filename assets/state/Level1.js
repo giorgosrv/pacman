@@ -440,7 +440,7 @@ var lives_text;
         
         
         this.manageTime();
-        this.enemySoldier();
+        
         nextLevel(this.game);
     }
 };
