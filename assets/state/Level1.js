@@ -395,7 +395,12 @@ var lives_text;
         time = this.game.time.totalElapsedSeconds()|0;
         time_text.text = 'Time: ' + time + ' seconds';
     },
-        
+
+    nextLevel: function () {
+        if (next_level == true) {
+            this.state.start('Level2');
+        }
+    },
         
         
         
@@ -448,8 +453,4 @@ var lives_text;
     
     
           
-   var nextLevel = function (game) {
-    if (next_level == true) {
-        game.state.start('Level2');
-    }
-}
+  
