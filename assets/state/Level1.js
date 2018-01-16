@@ -52,7 +52,7 @@
             this.physics.startSystem(Phaser.Physics.ARCADE);
         },
         
-       
+       preload: function () {},
         
         create: function () {
             var themesound;
