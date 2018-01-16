@@ -32,7 +32,7 @@ preload: function () {
             this.load.image('tiles', 'assets/pacman-tiles.png');
            // game.load.image("enemy2","assets/car.png")
             
-               game.load.image("enemy","assets/black.png");
+              this.game.load.image('enemy',"assets/black.png");
              this.load.spritesheet('teleport', 'assets/teleport.png', 32, 32);
             this.load.spritesheet('pacman', 'assets/pacman.png', 32, 32);
             this.load.tilemap('map', 'assets/pacman-map.json', null, Phaser.Tilemap.TILED_JSON);
