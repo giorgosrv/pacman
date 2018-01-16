@@ -78,9 +78,9 @@
             
             this.map.createFromTiles(13, this.safetile, 'banana', this.layer, this.bananas);
             
-          enemy = new Enemy(game, 0, 0, 1, 100);
+         this.enemy = new Enemy(game, 0, 0, 1, 100);
             game.add.existing(enemy);
-            enemy2 = new Enemy2(game, 0, 0, 1, 70);
+            this.enemy2 = new Enemy2(game, 0, 0, 1, 70);
             game.add.existing(enemy2);
              
           
