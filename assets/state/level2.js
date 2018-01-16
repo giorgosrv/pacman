@@ -20,7 +20,7 @@
 	   
               
         
-    var Pacman = function (game) {
+    var Pacman_level2  = function (game) {
         this.counter=0;
         this.map = null;
         this.layer = null;
@@ -40,7 +40,7 @@
     };
 	    
 	  
-    Pacman.prototype = {
+    Pacman_level2 .prototype = {
         init: function () {
             this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
             this.scale.pageAlignHorizontally = true;
