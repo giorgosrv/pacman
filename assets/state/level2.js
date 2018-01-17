@@ -22,6 +22,12 @@ var soldier_eaten = false;
 var direction = 0;
 var previous_direction = 0;
 
+var direction2 = 0;
+var previous_direction2 = 0;
+
+var direction3 = 0;
+var previous_direction3 = 0;
+
 
 var Pacman_level2  = function (game) {
     this.map = null;
@@ -334,6 +340,44 @@ Pacman_level2 .prototype = {
 
         previous_direction2 = direction2;
     },
+	
+    enemySoldierMove3: function () {
+        var enemySoldierSpeed = this.speed;
+
+        while (direction3 == previous_direction3) {
+            direction3 = this.game.rnd.between(0, 3);
+        }
+
+        this.soldier3.scale.x = -1;
+        this.soldier3.angle = 0;
+
+        if (direction3 == 0) {//goes right
+            this.soldier3.body.velocity.x = enemySoldierSpeed;
+            this.soldier3.body.velocity.y = 0;
+        }
+        else if (direction3 == 1) {//goes left
+            this.soldier3.body.velocity.x = -enemySoldierSpeed;
+            this.soldier3.body.velocity.y = 0;
+
+            this.soldier3.scale.x = 1;
+        }
+        else if (direction3 == 2) {//goes down
+            this.soldier3.body.velocity.x = 0;
+            this.soldier3.body.velocity.y = enemySoldierSpeed;
+
+            this.soldier3.scale.x = -1;
+            this.soldier3.angle = 90;
+        }
+        else {//goes up
+            this.soldier3.body.velocity.x = 0;
+            this.soldier3.body.velocity.y = -enemySoldierSpeed;
+
+            this.soldier3.angle = 270;
+        }
+
+        previous_direction3 = direction3;
+    },
+
 	
 	 enemySoldierKill: function () {
         if (this.pacman.overlap(this.soldier)) {
