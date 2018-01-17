@@ -217,6 +217,12 @@ Pacman.prototype = {
         if (this.dots.total === 0 && this.banana.total === 0 ) {
              next_level = true;
         }
+	    this.teleport1.body.velocity.x = 0;
+                this.teleport1.position.x = (1 * 16) + 8;
+                this.teleport1.position.y = (14 * 16) + 8;
+                this.teleport2.body.velocity.x = 0;
+                this.teleport2.position.x = (26 * 16) + 8;
+                this.teleport2.position.y = (14 * 16) + 8;
     },
 
    eatbanana: function (pacman, banana) {
