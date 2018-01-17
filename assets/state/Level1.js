@@ -249,6 +249,58 @@ Pacman.prototype = {
             end_text.visible = true;
         }
     },
+	
+	 enemySoldier: function () {
+        if (knife_eaten == false) {
+            if (this.pacman.overlap(this.knife)) {
+                music.play();
+                this.knife.visible = false;
+                atm_time = time;
+                knife_eaten = true;
+                after_8_time = atm_time + 8;
+            }
+        }
+        else {
+            if (time <= after_8_time ) {
+                if (soldier_eaten == false && knife_eaten == true) {
+                    if (this.pacman.overlap(this.soldier)) {
+                        soldier_eaten = true;
+                        this.soldier.visible = false;
+                        score += 250;
+                        score_text.text = 'Score: ' + score + ' points';
+                    }
+                }
+            }
+        }
+
+        if (knife_eaten == true) {
+            if (after_8_time - time > 0) {
+                if (soldier_eaten == false) {
+                    this.soldier.tint = 0xff0000;
+                }
+            }
+            else {
+                if (soldier_eaten == 0) {
+                    this.soldier.tint = 0xffffff;
+                    if (this.pacman.overlap(this.soldier)) {
+                        this.pacman.reset((13 * 16) + 8, (11 * 16) + 8);
+                        this.move(Phaser.RIGHT);
+                        lives--;
+                        lives_text.text = 'Lives: ' + lives;
+                    }
+                }
+            }
+        }
+        else {
+            if (this.pacman.overlap(this.soldier)) {
+                this.pacman.reset((13 * 16) + 8, (11 * 16) + 8);
+                this.move(Phaser.RIGHT);
+                lives--;
+                lives_text.text = 'Lives: ' + lives;
+            }
+        }
+    },
+
 
    
   
