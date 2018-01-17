@@ -1,4 +1,4 @@
- var audio = new Audio('assets/emotionalflute.mp3');
+ var audio = new Audio('audio/theme.wav');
     audio.play();
 var music;
 var time;
