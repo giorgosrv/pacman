@@ -8,7 +8,7 @@
         <script src="assets/state/Preload.js"></script>
         <script src="assets/state/MainMenu.js"></script>
         <script src="assets/state/Level1.js"></script>
-         
+          <script src="assets/states/Level2.js"></script>
         <script type="text/javascript">
             window.onload = function() {
                 var game = new Phaser.Game(448, 496, Phaser.AUTO);
@@ -16,7 +16,7 @@
                 game.state.add('Preload', Preload);
                 game.state.add('MainMenu', MainMenu);
                 game.state.add('Level1', Pacman);
-               
+                game.state.add('Level2', Pacman_level2);
                 game.state.start('Boot');
             };
         </script>
