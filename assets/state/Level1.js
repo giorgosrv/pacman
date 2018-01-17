@@ -1,3 +1,5 @@
+ var audio = new Audio('assets/emotionalflute.mp3');
+    audio.play();
 var music;
 var time;
 var time_text;
