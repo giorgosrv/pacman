@@ -332,6 +332,43 @@ Pacman.prototype = {
 
         previous_direction2 = direction2;
     },
+	
+	enemySoldierMove: function () {
+        var enemySoldierSpeed = this.speed - 50;
+
+        while (direction == previous_direction) {
+            direction = this.game.rnd.between(0, 3);
+        }
+
+        this.soldier.scale.x = -1;
+        this.soldier.angle = 0;
+
+        if (direction == 0) {//goes right
+            this.soldier.body.velocity.x = enemySoldierSpeed;
+            this.soldier.body.velocity.y = 0;
+        }
+        else if (direction == 1) {//goes left
+            this.soldier.body.velocity.x = -enemySoldierSpeed;
+            this.soldier.body.velocity.y = 0;
+
+            this.soldier.scale.x = 1;
+        }
+        else if (direction == 2) {//goes down
+            this.soldier.body.velocity.x = 0;
+            this.soldier.body.velocity.y = enemySoldierSpeed;
+
+            this.soldier.scale.x = -1;
+            this.soldier.angle = 90;
+        }
+        else {//goes up
+            this.soldier.body.velocity.x = 0;
+            this.soldier.body.velocity.y = -enemySoldierSpeed;
+
+            this.soldier.angle = 270;
+        }
+
+        previous_direction = direction;
+    },
 
     manageTime: function () {
         time = this.game.time.totalElapsedSeconds()|0;
