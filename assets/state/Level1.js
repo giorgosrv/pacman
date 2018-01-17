@@ -239,8 +239,7 @@ Pacman.prototype = {
         score += 10;
         score_text.text = 'Score: ' + score + ' points';
         if (this.dots.total === 0 && this.banana.total === 0 ) {
-            this.game.paused = true;
-            finish_text.visible = true;
+            next_level = true;
         }
     },
     endLevel: function () {
