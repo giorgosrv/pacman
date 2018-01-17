@@ -324,6 +324,7 @@ Pacman.prototype = {
         this.physics.arcade.collide(this.pacman, this.knife, this.enemySoldier, null, this);
         this.physics.arcade.overlap(this.pacman, this.dots, this.eatDot, null, this);
        
+            this.physics.arcade.overlap(this.pacman, this.bananas, this.eatbanana, null, this);
         this.marker.x = this.math.snapToFloor(Math.floor(this.pacman.x), this.gridsize) / this.gridsize;
         this.marker.y = this.math.snapToFloor(Math.floor(this.pacman.y), this.gridsize) / this.gridsize;
 
