@@ -323,21 +323,7 @@ Pacman.prototype = {
         previous_direction2 = direction2;
     },
 	
-	 enemySoldierKill: function () {
-        if (this.pacman.overlap(this.soldier)) {
-            this.pacman.reset((13 * 16) + 8, (11 * 16) + 8);
-            this.move(Phaser.LEFT);
-            lives--;
-            lives_text.text = 'Lives: ' + lives;
-        }
-        else if (this.pacman.overlap(this.soldier2)) {
-            this.pacman.reset((13 * 16) + 8, (11 * 16) + 8);
-            this.move(Phaser.LEFT);
-            lives--;
-            lives_text.text = 'Lives: ' + lives;
-        }
-       
-    },
+	
 
     manageTime: function () {
         time = this.game.time.totalElapsedSeconds()|0;
