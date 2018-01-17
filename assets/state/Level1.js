@@ -346,12 +346,7 @@ Pacman.prototype = {
             lives--;
             lives_text.text = 'Lives: ' + lives;
         }
-        else if (this.pacman.overlap(this.soldier3)) {
-            this.pacman.reset((13 * 16) + 8, (11 * 16) + 8);
-            this.move(Phaser.LEFT);
-            lives--;
-            lives_text.text = 'Lives: ' + lives;
-        }
+       
     },
 
     manageTime: function () {
