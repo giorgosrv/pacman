@@ -228,26 +228,16 @@ Pacman.prototype = {
                 this.teleport2.position.y = (14 * 16) + 8;
     },
 
-   eatbanana: function (pacman, banana) {
-            score = score + 5;
-            text.setText("Score: " + score);
-            banana.kill();
-            if (this.switch.isPlaying != true && this.switch2.isPlaying != true) {
-                this.switch.play();
-                this.counter = 1;
-            }
-            else {
-                if (this.counter % 6 == 0) {
-                    this.switch.play();
-                }
-                if (this.counter % 6 == 3) {
-                    this.switch2.play();
-                }
-                this.counter++;
-		   
-            }
-		   
-   },
+     eatbanana: function (pacman, banana) {
+        banana.kill();
+        music.play();
+        score += 10;
+        score_text.text = 'Score: ' + score + ' points';
+        if (this.dots.total === 0 && this.banana.total === 0 ) {
+            this.game.paused = true;
+            finish_text.visible = true;
+        }
+    },
     endLevel: function () {
         if (lives == 0) {
             this.game.paused = true;
