@@ -21,7 +21,7 @@ var soldier_eaten = false;
 
 var direction = 0;
 var previous_direction = 0;
-var next_level = false;
+
 
 var Pacman_level2  = function (game) {
     this.map = null;
@@ -335,41 +335,25 @@ Pacman_level2 .prototype = {
         previous_direction2 = direction2;
     },
 	
-	enemySoldierMove: function () {
-        var enemySoldierSpeed = this.speed - 50;
-
-        while (direction == previous_direction) {
-            direction = this.game.rnd.between(0, 3);
+	 enemySoldierKill: function () {
+        if (this.pacman.overlap(this.soldier)) {
+            this.pacman.reset((13 * 16) + 8, (11 * 16) + 8);
+            this.move(Phaser.LEFT);
+            lives--;
+            lives_text.text = 'Lives: ' + lives;
         }
-
-        this.soldier.scale.x = -1;
-        this.soldier.angle = 0;
-
-        if (direction == 0) {//goes right
-            this.soldier.body.velocity.x = enemySoldierSpeed;
-            this.soldier.body.velocity.y = 0;
+        else if (this.pacman.overlap(this.soldier2)) {
+            this.pacman.reset((13 * 16) + 8, (11 * 16) + 8);
+            this.move(Phaser.LEFT);
+            lives--;
+            lives_text.text = 'Lives: ' + lives;
         }
-        else if (direction == 1) {//goes left
-            this.soldier.body.velocity.x = -enemySoldierSpeed;
-            this.soldier.body.velocity.y = 0;
-
-            this.soldier.scale.x = 1;
+        else if (this.pacman.overlap(this.soldier3)) {
+            this.pacman.reset((13 * 16) + 8, (11 * 16) + 8);
+            this.move(Phaser.LEFT);
+            lives--;
+            lives_text.text = 'Lives: ' + lives;
         }
-        else if (direction == 2) {//goes down
-            this.soldier.body.velocity.x = 0;
-            this.soldier.body.velocity.y = enemySoldierSpeed;
-
-            this.soldier.scale.x = -1;
-            this.soldier.angle = 90;
-        }
-        else {//goes up
-            this.soldier.body.velocity.x = 0;
-            this.soldier.body.velocity.y = -enemySoldierSpeed;
-
-            this.soldier.angle = 270;
-        }
-
-        previous_direction = direction;
     },
 
     manageTime: function () {
@@ -377,11 +361,6 @@ Pacman_level2 .prototype = {
         time_text.text = 'Time: ' + time + ' seconds';
     },
 
-    nextLevel: function () {
-        if (next_level == true) {
-            this.state.start('Level2');
-        }
-    },
 
     update: function () {
 	     if(this.physics.arcade.collide(this.pacman, this.teleport1))
@@ -421,6 +400,6 @@ Pacman_level2 .prototype = {
         
         this.manageTime();
         
-        this.nextLevel();
+        
     }
 };
