@@ -102,6 +102,24 @@ Pacman.prototype = {
         end_text.visible = false;
         finish_text.visible = false;
         this.game.time.reset();
+	    
+              //--------------TELEPORT1-----------------------------------------------
+            this.teleport1 = this.add.sprite((1 * 16) + 8, (14 * 16) + 8, 'teleport', 0);
+            this.teleport1.anchor.set(0.5);
+            this.teleport1.animations.add('munch', [0, 1, 2, 1], 20, true);
+            this.teleport1.play('munch');
+            this.physics.arcade.enable(this.teleport1);
+            this.teleport1.body.setSize(16, 16, 0, 0);
+            //---------------------------------------------------------------------
+            //--------------TELEPORT2-----------------------------------------------
+            this.teleport2 = this.add.sprite((26* 16) + 8, (14 * 16) + 8, 'teleport', 0);
+            this.teleport2.anchor.set(0.5);
+            this.teleport2.animations.add('munch', [0, 1, 2, 1], 20, true);
+            this.teleport2.play('munch');
+            this.physics.arcade.enable(this.teleport2);
+            this.teleport2.body.setSize(16, 16, 0, 0);
+            //---------------------------------------------------------------------
+              
     },
 
     checkKeys: function () {
@@ -281,6 +299,16 @@ Pacman.prototype = {
     },
 
     update: function () {
+	     if(this.physics.arcade.collide(this.pacman, this.teleport1))
+            {
+                this.pacman.position.x = (20 * 16) + 8;
+                this.pacman.position.y = (14 * 16) + 8;
+            }
+            if(this.physics.arcade.collide(this.pacman, this.teleport2))
+            {
+                this.pacman.position.x = (7 * 16) + 8;
+                this.pacman.position.y = (14 * 16) + 8;
+            }
         this.physics.arcade.collide(this.pacman, this.layer);
         this.physics.arcade.collide(this.soldier, this.layer, this.enemySoldierMove, null, this);
         this.physics.arcade.collide(this.pacman, this.knife, this.enemySoldier, null, this);
