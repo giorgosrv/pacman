@@ -1,4 +1,4 @@
- var audio = new Audio('audio/theme.wav');
+ var audio = new Audio('audio/new.mp3');
     audio.play();
 var music;
 var time;
