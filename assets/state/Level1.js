@@ -229,23 +229,7 @@ Pacman.prototype = {
     },
 
    
-    eatBonus: function () {
-        if (counter == 0) {
-            if (time >= 10 && time < 16) {
-                this.dynamite.visible = true;
-                if (this.pacman.overlap(this.dynamite)) {
-                    music.play();
-                    this.dynamite.visible = false;
-                    score += 100;
-                    score_text.text = 'Score: ' + score + ' points';
-                    counter = 1;
-                }
-            }
-            else {
-                this.dynamite.visible = false;
-            }
-        }
-    },
+  
 
    
     enemySoldierMove: function () {
