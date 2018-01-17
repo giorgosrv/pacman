@@ -397,7 +397,7 @@ Pacman.prototype = {
         
         
         this.manageTime();
-        
+         this.enemySoldierKill();
         this.nextLevel();
     }
 };
