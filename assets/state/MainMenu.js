@@ -15,7 +15,7 @@ MainMenu.prototype = {
 
 		var level2 = this.add.button(this.world.centerX, this.world.centerY + 55, 'level2',
             function () {
-                this.game.state.start('Level2');
+                this.game.state.start('level2');
             }
         );
 		level2.anchor.setTo(0.5, 0.5);
