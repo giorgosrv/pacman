@@ -96,7 +96,7 @@ Pacman.prototype = {
 
         music = this.add.audio('chopping');
 
-        time_text = this.add.text(10, -2, 'Time: 0 seconds', { font: '14px Arial', fill: '#FFFFFF' });
+        time_text = this.add.text(10, 200, 'Time: 0 seconds', { font: '14px Arial', fill: '#FFFFFF' });
         score_text = this.add.text(180, -2, 'Score: 0 points', { font: '14px Arial', fill: '#FFFFFF' });
         lives_text = this.add.text(360, -2, 'Lives: 3', { font: '14px Arial', fill: '#FFFFFF' });
         end_text = this.add.text(180, 330, 'Game Over!', { font: '14px Arial', fill: '#FFFFFF' });
