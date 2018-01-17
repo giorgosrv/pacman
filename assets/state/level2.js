@@ -311,31 +311,31 @@ Pacman_level2 .prototype = {
             direction2 = this.game.rnd.between(0, 3);
         }
 
-        this.soldier2.scale.x = -1;
-        this.soldier2.angle = 0;
+        this.soldier.scale.x = -1;
+        this.soldier.angle = 0;
 
         if (direction2 == 0) {//goes right
-            this.soldier2.body.velocity.x = enemySoldierSpeed;
-            this.soldier2.body.velocity.y = 0;
+            this.soldier.body.velocity.x = enemySoldierSpeed;
+            this.soldier.body.velocity.y = 0;
         }
-        else if (direction2 == 1) {//goes left
-            this.soldier2.body.velocity.x = -enemySoldierSpeed;
-            this.soldier2.body.velocity.y = 0;
+       else if (direction2 == 1) {//goes left
+            this.soldier.body.velocity.x = -enemySoldierSpeed;
+            this.soldier.body.velocity.y = 0;
 
-            this.soldier2.scale.x = 1;
+            this.soldier.scale.x = 1;
         }
         else if (direction2 == 2) {//goes down
-            this.soldier2.body.velocity.x = 0;
-            this.soldier2.body.velocity.y = enemySoldierSpeed;
+            this.soldier.body.velocity.x = 0;
+            this.soldier.body.velocity.y = enemySoldierSpeed;
 
             this.soldier2.scale.x = -1;
             this.soldier2.angle = 90;
         }
         else {//goes up
-            this.soldier2.body.velocity.x = 0;
-            this.soldier2.body.velocity.y = -enemySoldierSpeed;
+            this.soldier.body.velocity.x = 0;
+            this.soldier.body.velocity.y = -enemySoldierSpeed;
 
-            this.soldier2.angle = 270;
+            this.soldier.angle = 270;
         }
 
         previous_direction2 = direction2;
