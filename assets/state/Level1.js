@@ -303,7 +303,7 @@ Pacman.prototype = {
 
         this.endLevel();
         
-        this.eatBonus();
+        
         this.manageTime();
         
         this.nextLevel();
