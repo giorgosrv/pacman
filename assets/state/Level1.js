@@ -68,8 +68,7 @@ Pacman.prototype = {
         this.dots.setAll('x', 6, false, false, 1);
         this.dots.setAll('y', 6, false, false, 1);
             
-            this.bananas.setAll('x', 15, false, false, 2);
-            this.bananas.setAll('y', 10, false, false, 2);   
+         
 	    
 	    
         //  Pacman should collide with everything except the safe tile
