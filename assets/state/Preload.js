@@ -36,6 +36,7 @@ preload: function () {
              this.load.spritesheet('teleport', 'assets/teleport.png', 32, 32);
             this.load.spritesheet('pacman', 'assets/pacman.png', 32, 32);
             this.load.tilemap('map', 'assets/pacman-map.json', null, Phaser.Tilemap.TILED_JSON);
+	
             //  Needless to say, graphics (C)opyright Namco
 		
 		
