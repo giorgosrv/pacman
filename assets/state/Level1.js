@@ -23,6 +23,9 @@ var soldier_eaten = false;
 
 var direction = 0;
 var previous_direction = 0;
+
+var direction2 = 0;
+var previous_direction2 = 0;
 var next_level = false;
 
 var Pacman = function (game) {
