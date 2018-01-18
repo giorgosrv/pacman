@@ -383,42 +383,7 @@ Pacman.prototype = {
         previous_direction = direction;
     },
 	
-	enemySoldierMove2: function () {
-        var enemySoldierSpeed = this.speed - 10;
-
-        while (direction2 == previous_direction2) {
-            direction2 = this.game.rnd.between(0, 3);
-        }
-
-        this.soldier2.scale.x = -1;
-        this.soldier2.angle = 0;
-
-        if (direction2 == 0) {//goes right
-            this.soldier2.body.velocity.x = enemySoldierSpeed;
-            this.soldier2.body.velocity.y = 0;
-        }
-        else if (direction2 == 1) {//goes left
-            this.soldier2.body.velocity.x = -enemySoldierSpeed;
-            this.soldier2.body.velocity.y = 0;
-
-            this.soldier2.scale.x = 1;
-        }
-        else if (direction2 == 2) {//goes down
-            this.soldier2.body.velocity.x = 0;
-            this.soldier2.body.velocity.y = enemySoldierSpeed;
-
-            this.soldier2.scale.x = -1;
-            this.soldier2.angle = 90;
-        }
-        else {//goes up
-            this.soldier2.body.velocity.x = 0;
-            this.soldier2.body.velocity.y = -enemySoldierSpeed;
-
-            this.soldier2.angle = 270;
-        }
-
-        previous_direction2 = direction2;
-    },
+	
 	
 	
 
@@ -446,7 +411,7 @@ Pacman.prototype = {
             }
         this.physics.arcade.collide(this.pacman, this.layer);
         this.physics.arcade.collide(this.soldier, this.layer, this.enemySoldierMove, null, this);
-	  this.physics.arcade.collide(this.soldier2, this.layer, this.enemySoldierMove2, null, this);
+	  
 	  
         this.physics.arcade.collide(this.pacman, this.knife, this.enemySoldier, null, this);
         this.physics.arcade.overlap(this.pacman, this.dots, this.eatDot, null, this);
