@@ -427,7 +427,7 @@ Pacman.prototype = {
 
     nextLevel: function () {
         if (next_level == true) {
-            this.state.start('Level2');
+            this.state.start('level2');
         }
     },
 
