@@ -74,7 +74,7 @@ Pacman.prototype = {
         this.dots.setAll('x', 6, false, false, 1);
         this.dots.setAll('y', 6, false, false, 1);
 	    
-	    this.knife = this.add.sprite((50 * 30), (80 * 16), 'knife', 0);
+	    this.knife = this.add.sprite((16 * 16), (16 * 16), 'knife', 0);
             
          
 	    
