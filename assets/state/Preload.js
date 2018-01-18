@@ -30,7 +30,7 @@ preload: function () {
             this.load.audio('switch', 'audio/switch.mp3');
             
             this.load.image('tiles', 'assets/pacman-tiles.png');
-	 this.load.image('tiles2', 'assets/pacman-tiles2.png')
+	 
            // game.load.image("enemy2","assets/car.png")
             
               this.game.load.image('soldier',"assets/black.png");
