@@ -97,6 +97,22 @@ Pacman_level2 .prototype = {
         this.soldier.body.setSize(16, 16, 0, 0);
         this.soldier.body.velocity.x = -(this.speed - 50);
         this.soldier.body.velocity.y = 0;
+	    
+	     this.soldier2 = this.add.sprite((26 * 16) + 8, (16 * 16) + 8, 'soldier', 0);
+        this.soldier2.anchor.set(0.5);
+        this.physics.arcade.enable(this.soldier2);
+        this.soldier2.body.setSize(16, 16, 0, 0);
+        this.soldier2.body.velocity.x = -(this.speed - 10);
+        this.soldier2.body.velocity.y = 0;
+	    
+	    
+        this.soldier3 = this.add.sprite((9 * 16) + 8, (29 * 16) + 8, 'soldier', 0);
+        this.soldier3.anchor.set(0.5);
+        this.physics.arcade.enable(this.soldier3);
+        this.soldier3.body.setSize(16, 16, 0, 0);
+        this.soldier3.body.velocity.x = -(this.speed);
+        this.soldier3.body.velocity.y = 0;
+
 
         this.cursors = this.input.keyboard.createCursorKeys();
 
@@ -311,36 +327,36 @@ Pacman_level2 .prototype = {
             direction2 = this.game.rnd.between(0, 3);
         }
 
-        this.soldier.scale.x = -1;
-        this.soldier.angle = 0;
+        this.soldier2.scale.x = -1;
+        this.soldier2.angle = 0;
 
         if (direction2 == 0) {//goes right
-            this.soldier.body.velocity.x = enemySoldierSpeed;
-            this.soldier.body.velocity.y = 0;
+            this.soldier2.body.velocity.x = enemySoldierSpeed;
+            this.soldier2.body.velocity.y = 0;
         }
-       else if (direction2 == 1) {//goes left
-            this.soldier.body.velocity.x = -enemySoldierSpeed;
-            this.soldier.body.velocity.y = 0;
+        else if (direction2 == 1) {//goes left
+            this.soldier2.body.velocity.x = -enemySoldierSpeed;
+            this.soldier2.body.velocity.y = 0;
 
-            this.soldier.scale.x = 1;
+            this.soldier2.scale.x = 1;
         }
         else if (direction2 == 2) {//goes down
-            this.soldier.body.velocity.x = 0;
-            this.soldier.body.velocity.y = enemySoldierSpeed;
+            this.soldier2.body.velocity.x = 0;
+            this.soldier2.body.velocity.y = enemySoldierSpeed;
 
             this.soldier2.scale.x = -1;
             this.soldier2.angle = 90;
         }
         else {//goes up
-            this.soldier.body.velocity.x = 0;
-            this.soldier.body.velocity.y = -enemySoldierSpeed;
+            this.soldier2.body.velocity.x = 0;
+            this.soldier2.body.velocity.y = -enemySoldierSpeed;
 
-            this.soldier.angle = 270;
+            this.soldier2.angle = 270;
         }
 
         previous_direction2 = direction2;
     },
-	
+
     enemySoldierMove3: function () {
         var enemySoldierSpeed = this.speed;
 
@@ -421,6 +437,7 @@ Pacman_level2 .prototype = {
         this.physics.arcade.collide(this.soldier, this.layer, this.enemySoldierMove, null, this);
 	  this.physics.arcade.collide(this.soldier2, this.layer, this.enemySoldierMove2, null, this);
         this.physics.arcade.collide(this.pacman, this.knife, this.enemySoldier, null, this);
+	    this.physics.arcade.collide(this.soldier3, this.layer, this.enemySoldierMove3, null, this);
         this.physics.arcade.overlap(this.pacman, this.dots, this.eatDot, null, this);
        
             this.physics.arcade.overlap(this.pacman, this.bananas, this.eatbanana, null, this);
