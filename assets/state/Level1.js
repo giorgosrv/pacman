@@ -223,7 +223,7 @@ Pacman.prototype = {
         music.play();
         score++;
         score_text.text = 'Score: ' + score + ' points';
-        if (this.dots.total === 0 && this.banana.total === 0 ) {
+        if (this.dots.total === 0  ) {
              next_level = true;
         }
 	    this.teleport1.body.velocity.x = 0;
@@ -239,9 +239,7 @@ Pacman.prototype = {
         music.play();
         score += 10;
         score_text.text = 'Score: ' + score + ' points';
-        if (this.dots.total === 0 && this.banana.total === 0 ) {
-            next_level = true;
-        }
+       
     },
     endLevel: function () {
         if (lives == 0) {
