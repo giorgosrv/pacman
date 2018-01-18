@@ -446,7 +446,7 @@ Pacman.prototype = {
         this.physics.arcade.collide(this.pacman, this.layer);
         this.physics.arcade.collide(this.soldier, this.layer, this.enemySoldierMove, null, this);
 	  this.physics.arcade.collide(this.soldier2, this.layer, this.enemySoldierMove2, null, this);
-	    this.physics.arcade.collide(this.pacman, soldier, this.kill_pacman);
+	    this.physics.arcade.collide(this.pacman, soldier, this.kill_pacman,null,this);
         this.physics.arcade.collide(this.pacman, this.knife, this.enemySoldier, null, this);
         this.physics.arcade.overlap(this.pacman, this.dots, this.eatDot, null, this);
        
