@@ -1,4 +1,4 @@
- var audio = new Audio('audio/new.mp3');
+ var audio = new Audio('audio/goo.mp3');
     audio.play();
 var music;
 var time;
