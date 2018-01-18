@@ -359,7 +359,7 @@ Pacman_level2 .prototype = {
     },
 
     enemySoldierMove3: function () {
-        var enemySoldierSpeed = this.speed;
+        var enemySoldierSpeed = this.speed - 70;
 
         while (direction3 == previous_direction3) {
             direction3 = this.game.rnd.between(0, 3);
