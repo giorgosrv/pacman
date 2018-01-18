@@ -241,8 +241,9 @@ Pacman_level2 .prototype = {
         music.play();
         score++;
         score_text.text = 'Score: ' + score + ' points';
-        if (this.dots.total === 0 && this.banana.total === 0 ) {
-             next_level = true;
+       if (this.dots.total === 0 ) {
+             this.game.paused = true;
+             finish_text.visible = true;
         }
 	    this.teleport1.body.velocity.x = 0;
                 this.teleport1.position.x = (1 * 16) + 8;
