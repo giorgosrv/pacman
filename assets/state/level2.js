@@ -332,11 +332,11 @@ Pacman_level2 .prototype = {
 
         if (direction2 == 0) {//goes right
             this.soldier2.body.velocity.x = enemySoldierSpeed;
-            this.soldier2.body.velocity.y = 0;
+            this.soldier2.body.velocity.y = 1;
         }
         else if (direction2 == 1) {//goes left
             this.soldier2.body.velocity.x = -enemySoldierSpeed;
-            this.soldier2.body.velocity.y = 0;
+            this.soldier2.body.velocity.y = 1;
 
             this.soldier2.scale.x = 1;
         }
