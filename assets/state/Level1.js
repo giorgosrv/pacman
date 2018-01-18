@@ -73,6 +73,8 @@ Pacman.prototype = {
         //  The dots will need to be offset by 6px to put them back in the middle of the grid
         this.dots.setAll('x', 6, false, false, 1);
         this.dots.setAll('y', 6, false, false, 1);
+	    
+	    this.knife = this.add.sprite((14 * 16), (29 * 16), 'knife', 0);
             
          
 	    
