@@ -124,7 +124,7 @@ Pacman_level2 .prototype = {
         score_text = this.add.text(180, 460, 'Score: 0 points', { font: '14px Arial', fill: '#000000' });
         lives_text = this.add.text(360, 460, 'Lives: 3', { font: '14px Arial', fill: '#000000' });
         end_text = this.add.text(180, 330, 'Game Over!', { font: '14px Arial', fill: '#FFFFFF' });
-        finish_text = this.add.text(185, 210, 'YOU WIN!!!!', { font: '14px Arial', fill: '#FFFFFF' });
+        finish_text = this.add.text(185, 210, 'YOU WIN!!!!', { font: '30px Arial', fill: '#FFFFFF' });
 
         end_text.visible = false;
         finish_text.visible = false;
