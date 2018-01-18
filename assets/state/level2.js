@@ -98,7 +98,7 @@ Pacman_level2 .prototype = {
         this.soldier.body.velocity.x = -(this.speed - 50);
         this.soldier.body.velocity.y = 0;
 	    
-	     this.soldier2 = this.add.sprite((26 * 16) + 8, (16 * 16) + 8, 'soldier', 0);
+	     this.soldier2 = this.add.sprite((5 * 16) + 8, (16 * 16) + 8, 'soldier', 0);
         this.soldier2.anchor.set(0.5);
         this.physics.arcade.enable(this.soldier2);
         this.soldier2.body.setSize(16, 16, 0, 0);
@@ -106,7 +106,7 @@ Pacman_level2 .prototype = {
         this.soldier2.body.velocity.y = 0;
 	    
 	    
-        this.soldier3 = this.add.sprite((9 * 16) + 8, (29 * 16) + 8, 'soldier', 0);
+        this.soldier3 = this.add.sprite((12 * 16) + 8, (29 * 16) + 8, 'soldier', 0);
         this.soldier3.anchor.set(0.5);
         this.physics.arcade.enable(this.soldier3);
         this.soldier3.body.setSize(16, 16, 0, 0);
