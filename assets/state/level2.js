@@ -60,7 +60,7 @@ Pacman_level2 .prototype = {
 
     create: function () {
         this.map = this.add.tilemap('map');
-        this.map.addTilesetImage('pacman-tiles', 'tiles');
+        this.map.addTilesetImage('pacman-tiles2', 'tiles');
         
 
         this.layer = this.map.createLayer('Pacman');
