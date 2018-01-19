@@ -369,6 +369,42 @@ Pacman.prototype = {
     },
 
     update: function () {
+	       if (this.physics.arcade.collide(this.pacman, this.soldier){
+			
+			if (lives > 1) {
+			
+                    lives = lives - 1;
+                    score = 0;
+                    game.state.star(game.state.current);
+                    alert("Caution, you have lost 1 live!");
+                    pacman.kill();
+			
+                     this.pacman.position.x = (14 * 16) + 8;
+                    this.pacman.position.y = (17 * 16) + 8;
+                    this.move(Phaser.LEFT);
+                    this.soldier.position.x = (14 * 16) + 8;
+                    this.soldier.position.y = (23 * 16) + 8;
+                     }
+                else
+                {        
+                    lives = 3;
+                    score = 0;
+			
+                    
+                   
+                  
+                    location.reload();
+                    time = 0;
+                    this.dots.callAll('revive');
+                     this.pacman.position.x = (14 * 16) + 8;
+                    this.pacman.position.y = (17 * 16) + 8;
+                    this.move(Phaser.LEFT);
+                    this.soldier.position.x = (14 * 16) + 8;
+                    this.soldier.position.y = (23 * 16) + 8;
+                }
+		
+		}
+
 	     if(this.physics.arcade.collide(this.pacman, this.teleport1))
             {
                 this.pacman.position.x = (20 * 16) + 8;
