@@ -411,6 +411,23 @@ Pacman_level2 .prototype = {
 
 
     update: function () {
+	      if (this.physics.arcade.collide(this.pacman, this.soldier) || this.physics.arcade.collide(this.pacman, this.soldier2)) {
+			
+			if (lives > 1) {
+			 lives--;
+			 livestext.text = "lives: " + lives;   
+			    
+			 score = 0;
+			 this.pacman.position.x = (14 * 16) + 8;
+			 this.pacman.position.y = (17 * 16) + 8;
+			 this.move(Phaser.LEFT);
+			 }
+		        else if(lives == 1){
+				
+			 alert("Defeat!");
+		   	 window.location.reload();
+ 		        }
+		}
 	     if(this.physics.arcade.collide(this.pacman, this.teleport1))
             {
                 this.pacman.position.x = (20 * 16) + 8;
