@@ -66,7 +66,7 @@ Pacman_level2 .prototype = {
         this.layer = this.map.createLayer('Pacman');
 
         this.dots = this.add.physicsGroup();
-        this.banana = this.add.physicsGroup();
+        this.bananas = this.add.physicsGroup();
         
 
         this.map.createFromTiles(7, this.safetile, 'dot', this.layer, this.dots);
