@@ -70,7 +70,7 @@ Pacman_level2 .prototype = {
         
 
         this.map.createFromTiles(7, this.safetile, 'dot', this.layer, this.dots);
-        this.map.createFromTiles(13, this.safetile, 'banana', this.layer, this.banana);
+        this.map.createFromTiles(13, this.safetile, 'banana', this.layer, this.bananas);
        
         //  The dots will need to be offset by 6px to put them back in the middle of the grid
         this.dots.setAll('x', 6, false, false, 1);
