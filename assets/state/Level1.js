@@ -323,7 +323,7 @@ Pacman.prototype = {
                 if (soldier_eaten == 0) {
                     this.soldier.tint = 0xffffff;
                     if (this.pacman.overlap(this.soldier)) {
-                        this.pacman.reset((13 * 16) + 8, (11 * 16) + 8);
+                        this.pacman.reset((13 * 11) + 8, (13 * 11) + 8);
                         this.move(Phaser.RIGHT);
                         lives--;
                         lives_text.text = 'Lives: ' + lives;
