@@ -42,7 +42,7 @@ var Pacman = function (game) {
     this.opposites = [Phaser.NONE, Phaser.RIGHT, Phaser.LEFT, Phaser.DOWN, Phaser.UP];
     this.current = Phaser.NONE;
     this.turning = Phaser.NONE;
-	this.soldier = null;
+	//this.soldier = null;
 };
 
 Pacman.prototype = {
